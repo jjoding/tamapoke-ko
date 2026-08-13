@@ -31,6 +31,9 @@
   code { background:#0001; padding:.1em .4em; border-radius:5px; }
   a { color:var(--accent); }
   .note { font-size:.9rem; color:#6b6b76; }
+  .credit { margin-top:3rem; padding-top:1.25rem; border-top:1px solid var(--track);
+            font-size:.85rem; color:#6b6b76; }
+  .credit p { margin:.35rem 0; }
 </style>
 </head>
 <body>
@@ -45,6 +48,7 @@
 
   <h2><span class="num">1</span>Flash the firmware</h2>
   <div class="step">
+    <p><b>처음 설치하는 경우:</b> 먼저 <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">원작자 설치 페이지</a>에서 원본 펌웨어와 스프라이트를 설치하고 정상 작동을 확인하세요. 그 다음 이 페이지에서 한글 펌웨어를 <b>Erase 없이</b> 설치하면 됩니다.</p>
     <p>Plug the board in via USB and press install. Pick the port and wait.</p>
     <esp-web-install-button manifest="manifest.json">
       <button slot="activate">⚡ Install TamaPoke</button>
@@ -69,7 +73,7 @@
       <button id="auto" disabled>⬇️ Load sprites</button>
     </div>
     <p class="note">Have your own <code>.bin</code> files? <label style="cursor:pointer;text-decoration:underline">pick them manually<input id="files" type="file" accept=".bin" multiple disabled hidden></label></p>
-    <p class="note">🎨 Want to make your own sprites? See <a href="https://github.com/socquique/TamaPoke#generate-and-load-the-sprites-yourself" target="_blank">how to generate &amp; load them</a> in the repo.</p>
+    <p class="note">🎨 Sprites are downloaded from the original TamaPoke web host. Want to make your own? See <a href="https://github.com/socquique/TamaPoke#generate-and-load-the-sprites-yourself" target="_blank">how to generate &amp; load them</a> in the repo.</p>
     <div class="bar" id="bar"><div></div></div>
     <pre id="log"></pre>
   </div>
@@ -83,6 +87,18 @@
 
   <p class="note">Sprites from <a href="https://github.com/PMDCollab/SpriteCollab" target="_blank">PMD SpriteCollab</a> (CC BY-NC).
      Pokémon is a ™ of Nintendo / Game Freak. Non-commercial project.</p>
+
+  <footer class="credit">
+    <p><b>원작자 존중 안내</b></p>
+    <p>TamaPoke 한국어판은 원작자 socquique의 TamaPoke 프로젝트를 기반으로 한 비공식 한국어판입니다.</p>
+    <p>
+      원작 프로젝트:
+      <a href="https://github.com/socquique/TamaPoke" target="_blank" rel="noreferrer">socquique/TamaPoke</a>
+      · 원본 웹 설치 페이지:
+      <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">TamaPoke Web Installer</a>
+    </p>
+    <p>한국어판 배포자: jjoding · 비상업적 팬 프로젝트</p>
+  </footer>
 </div>
 
 <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js"></script>
@@ -177,11 +193,12 @@ document.getElementById('connect').onclick = async () => {
 document.getElementById('auto').onclick = async () => {
   if (!writer) { log('Connect the board first.'); return; }
   document.getElementById('auto').disabled = true;
-  log('Downloading sprite bundle (~58 MB)...');
+    log('Downloading sprite bundle from the original TamaPoke host (~40 MB)...');
   let items;
   try {
-    // sprites.pak servido desde el mismo origen (GitHub Pages) -> sin lios de CORS
-    const resp = await fetch('sprites.pak');
+    // Keep the large bundle out of GitHub Pages; use the original project host.
+    const spriteUrl = 'https://socquique.github.io/TamaPoke/web/sprites.pak';
+    const resp = await fetch(spriteUrl);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     items = parsePak(await resp.arrayBuffer());
   } catch (e) { log('Could not download sprites.pak: ' + e.message); return; }
