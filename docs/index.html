@@ -38,7 +38,7 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>🐢 TamaPoke</h1>
+  <h1>🐢 다마포케 한국어판(비공식)</h1>
   <p class="sub">A 151-Pokémon tamagotchi for the Waveshare ESP32-S3-Touch-AMOLED-1.75.
      Install it from your browser — no Arduino, no drivers.</p>
 
@@ -46,34 +46,31 @@
     ⚠️ Your browser doesn't support Web Serial. Use <b>Chrome</b> or <b>Edge</b> on a computer.
   </p>
 
-  <h2><span class="num">1</span>Flash the firmware</h2>
+  <h2><span class="num">1</span>펌웨어 설치</h2>
   <div class="step">
     <p><b>처음 설치하는 경우:</b> 먼저 <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">원작자 설치 페이지</a>에서 원본 펌웨어와 스프라이트를 설치하고 정상 작동을 확인하세요. 그 다음 이 페이지에서 한글 펌웨어를 <b>Erase 없이</b> 설치하면 됩니다.</p>
-    <p>Plug the board in via USB and press install. Pick the port and wait.</p>
+    <p>보드를 USB로 연결한 뒤 설치 버튼을 누르세요. 포트를 선택하고 완료될 때까지 기다리세요.</p>
     <esp-web-install-button manifest="manifest.json">
-      <button slot="activate">⚡ Install TamaPoke</button>
-      <span slot="unsupported">Browser not supported (use Chrome/Edge).</span>
-      <span slot="not-allowed">Needs HTTPS.</span>
+      <button slot="activate">⚡ 한글 펌웨어 설치</button>
+      <span slot="unsupported">지원되지 않는 브라우저입니다(Chrome 또는 Edge 사용).</span>
+      <span slot="not-allowed">HTTPS 연결이 필요합니다.</span>
     </esp-web-install-button>
-    <p class="note">🔄 <b>Updating to a new version? Install <u>without</u> erasing</b> to keep
-       your Pokémon — the save lives in flash and the sprites on the microSD, so a normal
-       install keeps both. Only a full <b>Erase</b> wipes your saved pet (the SD sprites
-       survive even that). First time on a fresh board? You can erase, no problem.</p>
+    <p class="note">🔄 <b>새 버전으로 업데이트할 때는 전체 초기화 없이 설치</b>하세요.
+       포켓몬 저장 데이터는 플래시에, 스프라이트는 microSD에 저장되므로 일반 설치에서는 둘 다 유지됩니다.
+       전체 <b>Erase</b>를 선택하면 저장된 포켓몬이 초기화됩니다.</p>
   </div>
 
-  <h2><span class="num">2</span>Load the sprites onto the microSD</h2>
+  <h2><span class="num">2</span>스프라이트를 microSD에 설치</h2>
   <div class="step">
-    <p>Put a microSD into the board (it formats itself). Press <b>Connect board</b>
-       and then <b>Load sprites</b>: they download and copy over USB automatically
-       (~40 MB, a few minutes). Don't remove the card.</p>
-    <p class="note">Close the step-1 install tab first (only one program can use
-       the port at a time).</p>
+    <p>보드에 microSD를 넣으세요(필요한 경우 자동으로 포맷됩니다). <b>보드 연결</b>을 누른 뒤
+       <b>스프라이트 설치</b>를 누르면 USB를 통해 자동으로 복사됩니다. 전송 중에는 카드를 제거하지 마세요.</p>
+    <p class="note">먼저 1단계의 펌웨어 설치 탭을 닫으세요. 한 번에 하나의 프로그램만 포트를 사용할 수 있습니다.</p>
     <div class="row">
-      <button id="connect">🔌 Connect board</button>
-      <button id="auto" disabled>⬇️ Load sprites</button>
+      <button id="connect">🔌 보드 연결</button>
+      <button id="auto" disabled>⬇️ 스프라이트 설치</button>
     </div>
-    <p class="note">Have your own <code>.bin</code> files? <label style="cursor:pointer;text-decoration:underline">pick them manually<input id="files" type="file" accept=".bin" multiple disabled hidden></label></p>
-    <p class="note">🎨 Sprites are downloaded from the original TamaPoke web host. Want to make your own? See <a href="https://github.com/socquique/TamaPoke#generate-and-load-the-sprites-yourself" target="_blank">how to generate &amp; load them</a> in the repo.</p>
+    <p class="note">직접 준비한 <code>.bin</code> 파일이 있나요? <label style="cursor:pointer;text-decoration:underline">수동으로 선택<input id="files" type="file" accept=".bin" multiple disabled hidden></label></p>
+    <p class="note">🎨 스프라이트는 원작자 TamaPoke 웹 호스트에서 내려받습니다. 직접 만들고 싶다면 <a href="https://github.com/socquique/TamaPoke#generate-and-load-the-sprites-yourself" target="_blank">생성 및 설치 방법</a>을 참고하세요.</p>
     <div class="bar" id="bar"><div></div></div>
     <pre id="log"></pre>
   </div>
@@ -98,6 +95,9 @@
       <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">TamaPoke Web Installer</a>
     </p>
     <p>한국어판 배포자: jjoding · 비상업적 팬 프로젝트</p>
+    <p><b>Respect for the original author</b></p>
+    <p>The Korean version is an unofficial Korean localization based on socquique's TamaPoke project.</p>
+    <p>Original project: <a href="https://github.com/socquique/TamaPoke" target="_blank" rel="noreferrer">socquique/TamaPoke</a> · Distributor: jjoding · Non-commercial fan project</p>
   </footer>
 </div>
 
@@ -173,7 +173,7 @@ async function sendAll(items) {
     done++;
     fill.style.width = (done / items.length * 100) + '%';
   }
-  log(`Done (${done - fail}/${items.length}). Restart the board (PWR button).`);
+  log(`완료 (${done - fail}/${items.length}). 보드를 재시작하세요(PWR 버튼).`);
 }
 
 document.getElementById('connect').onclick = async () => {
@@ -183,17 +183,17 @@ document.getElementById('connect').onclick = async () => {
     reader = port.readable.getReader();
     writer = port.writable.getWriter();
     lineBuf = '';
-    log('Connected. Press "Load sprites".');
+    log('연결되었습니다. "스프라이트 설치"를 누르세요.');
     document.getElementById('auto').disabled = false;
     document.getElementById('files').disabled = false;
     document.getElementById('connect').disabled = true;
-  } catch (e) { log('Could not connect: ' + e.message); }
+  } catch (e) { log('연결할 수 없습니다: ' + e.message); }
 };
 
 document.getElementById('auto').onclick = async () => {
-  if (!writer) { log('Connect the board first.'); return; }
+  if (!writer) { log('먼저 보드를 연결하세요.'); return; }
   document.getElementById('auto').disabled = true;
-    log('Downloading sprite bundle from the original TamaPoke host (~40 MB)...');
+    log('원작자 TamaPoke 호스트에서 스프라이트를 다운로드합니다(~40MB)...');
   let items;
   try {
     // Keep the large bundle out of GitHub Pages; use the original project host.
@@ -201,8 +201,8 @@ document.getElementById('auto').onclick = async () => {
     const resp = await fetch(spriteUrl);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     items = parsePak(await resp.arrayBuffer());
-  } catch (e) { log('Could not download sprites.pak: ' + e.message); return; }
-  log(`${items.length} sprites. Sending over USB...`);
+  } catch (e) { log('스프라이트를 다운로드할 수 없습니다: ' + e.message); return; }
+  log(`${items.length}개 스프라이트를 USB로 전송합니다...`);
   await sendAll(items);
 };
 
