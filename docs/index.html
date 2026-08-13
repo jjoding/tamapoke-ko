@@ -46,7 +46,7 @@
     ⚠️ Your browser doesn't support Web Serial. Use <b>Chrome</b> or <b>Edge</b> on a computer.
   </p>
 
-  <h2><span class="num">1</span>펌웨어 설치</h2>
+  <h2><span class="num">🔧</span>펌웨어 설치</h2>
   <div class="step">
     <p><b>처음 설치하는 경우:</b> 먼저 <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">원작자 설치 페이지</a>에서 원본 펌웨어와 스프라이트를 설치하고 정상 작동을 확인하세요. 그 다음 이 페이지에서 한글 펌웨어를 <b>Erase 없이</b> 설치하면 됩니다.</p>
     <p>보드를 USB로 연결한 뒤 설치 버튼을 누르세요. 포트를 선택하고 완료될 때까지 기다리세요.</p>
@@ -58,21 +58,6 @@
     <p class="note">🔄 <b>새 버전으로 업데이트할 때는 전체 초기화 없이 설치</b>하세요.
        포켓몬 저장 데이터는 플래시에, 스프라이트는 microSD에 저장되므로 일반 설치에서는 둘 다 유지됩니다.
        전체 <b>Erase</b>를 선택하면 저장된 포켓몬이 초기화됩니다.</p>
-  </div>
-
-  <h2><span class="num">2</span>스프라이트를 microSD에 설치</h2>
-  <div class="step">
-    <p>보드에 microSD를 넣으세요(필요한 경우 자동으로 포맷됩니다). <b>보드 연결</b>을 누른 뒤
-       <b>스프라이트 설치</b>를 누르면 USB를 통해 자동으로 복사됩니다. 전송 중에는 카드를 제거하지 마세요.</p>
-    <p class="note">먼저 1단계의 펌웨어 설치 탭을 닫으세요. 한 번에 하나의 프로그램만 포트를 사용할 수 있습니다.</p>
-    <div class="row">
-      <button id="connect">🔌 보드 연결</button>
-      <button id="auto" disabled>⬇️ 스프라이트 설치</button>
-    </div>
-    <p class="note">직접 준비한 <code>.bin</code> 파일이 있나요? <label style="cursor:pointer;text-decoration:underline">수동으로 선택<input id="files" type="file" accept=".bin" multiple disabled hidden></label></p>
-    <p class="note">🎨 스프라이트는 원작자 TamaPoke 웹 호스트에서 내려받습니다. 직접 만들고 싶다면 <a href="https://github.com/socquique/TamaPoke#generate-and-load-the-sprites-yourself" target="_blank">생성 및 설치 방법</a>을 참고하세요.</p>
-    <div class="bar" id="bar"><div></div></div>
-    <pre id="log"></pre>
   </div>
 
   <h2>How to play</h2>
@@ -103,13 +88,10 @@
 
 <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js"></script>
 <script>
-const log = (m) => { const el = document.getElementById('log'); el.style.display='block';
-  el.textContent += m + '\n'; el.scrollTop = el.scrollHeight; };
 const supported = 'serial' in navigator;
-if (!supported) { document.getElementById('unsupported').style.display='block';
-  document.getElementById('connect').disabled = true; }
-
-let port, reader, writer, lineBuf = '';
+if (!supported) document.getElementById('unsupported').style.display='block';
+/* Sprite installation is intentionally handled on the original TamaPoke page. */
+/*
 
 async function readLine(timeoutMs = 6000) {
   const deadline = Date.now() + timeoutMs;
@@ -213,6 +195,7 @@ document.getElementById('files').onchange = async (ev) => {
   log(`${items.length} files. Sending...`);
   await sendAll(items);
 };
+*/
 </script>
 </body>
 </html>
