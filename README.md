@@ -6,7 +6,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 현재 버전 | v0.40 |
+| 현재 버전 | v0.40.1 |
 | 펌웨어 표시 | `1.4-ko-v0.40` |
 | 배포자 | jjoding |
 | 대상 보드 | Waveshare ESP32-S3-Touch-AMOLED-1.75 |
@@ -67,9 +67,16 @@
 
 - 한글·영문·숫자 혼합 문자열의 기준선과 폭 계산 개선
 
+### v0.40.1 — 저장 데이터 보존형 웹 업데이트
+
+- 전체 merged 이미지 대신 앱 영역 전용 바이너리 사용
+- 원본 TamaPoke v1.4의 부트로더·파티션·NVS 저장 영역 유지
+- 웹 manifest를 `0x10000` 앱 영역 업데이트 방식으로 변경
+- 원본 v1.4 펌웨어와 스프라이트 설치를 웹 업데이트의 필수 전제조건으로 명시
+
 ## 최초 설치 흐름
 
-1. [원작자 TamaPoke 설치 페이지](https://socquique.github.io/TamaPoke/web/)에서 원본 펌웨어 설치
+1. [원작자 TamaPoke 설치 페이지](https://socquique.github.io/TamaPoke/web/)에서 원본 TamaPoke v1.4 펌웨어 설치
 2. 원작자 페이지에서 스프라이트 설치
 3. 원본 보드 정상 작동 확인
 4. 이 한국어판 펌웨어 설치
@@ -82,16 +89,16 @@
 Arduino IDE에서 `TamaPoke/TamaPoke.ino`를 열고 보드 설정을 완료한 뒤 컴파일합니다.
 자세한 절차는 `ARDUINO_IDE_BEGINNER_GUIDE.md`를 참고하세요.
 
-이 v0.40 패키지에는 컴파일이 확인된 전체 플래시 이미지가 포함되어 있습니다.
-웹 배포 파일은 `TamaPoke/web/firmware/tamapoke-ko.bin`입니다. 이 파일은
-부트로더·파티션·애플리케이션이 결합된 전체 이미지이므로 웹 설치에 그대로 사용합니다.
+이 v0.40.1 패키지에는 컴파일이 확인된 앱 영역 전용 바이너리가 포함되어 있습니다.
+웹 배포 파일은 `TamaPoke/web/firmware/tamapoke-ko.bin`이며 `0x10000` 앱 영역에만
+설치됩니다. 원본 v1.4가 아닌 보드에는 사용하지 마세요.
 
 웹 파일 구조:
 
 ```text
 TamaPoke/web/index.html
 TamaPoke/web/manifest.json
-TamaPoke/web/firmware/tamapoke-ko.bin  ← v0.40 전체 플래시 이미지
+TamaPoke/web/firmware/tamapoke-ko.bin  ← v0.40.1 앱 영역 업데이트 이미지
 ```
 
 ## 원작자 존중
