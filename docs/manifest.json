@@ -1,7 +1,7 @@
 {
   "name": "TamaPoke 한국어판",
   "version": "0.40.1",
-  "new_install_prompt_erase": false,
+  "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP32-S3",
