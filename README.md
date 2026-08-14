@@ -6,7 +6,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 현재 버전 | v0.40.1 |
+| 현재 버전 | v0.40.2 |
 | 펌웨어 표시 | `1.4-ko-v0.40` |
 | 배포자 | jjoding |
 | 대상 보드 | Waveshare ESP32-S3-Touch-AMOLED-1.75 |
@@ -74,6 +74,13 @@
 - 웹 manifest를 `0x10000` 앱 영역 업데이트 방식으로 변경
 - 원본 v1.4 펌웨어와 스프라이트 설치를 웹 업데이트의 필수 전제조건으로 명시
 
+### v0.40.2 — 웹 Erase 동작 회귀 수정
+
+- ESP Web Tools가 새 설치로 판단할 때 자동 Erase하지 않도록 사용자 선택 대화상자 복원
+- 업데이트 시 `Erase`를 선택하지 않아야 한다는 안내 강화
+- 앱 전용 바이너리와 `0x10000` 업데이트 주소 유지
+- 이전 manifest가 브라우저 캐시에 남을 경우 시크릿 창 또는 사이트 데이터 삭제 후 재접속하도록 안내
+
 ## 최초 설치 흐름
 
 1. [원작자 TamaPoke 설치 페이지](https://socquique.github.io/TamaPoke/web/)에서 원본 TamaPoke v1.4 펌웨어 설치
@@ -84,12 +91,17 @@
 
 이 배포판은 스프라이트 설치를 지원하지 않습니다. 원작자 페이지에서 먼저 설치합니다.
 
+> ⚠️ 저장 데이터 주의: 웹 설치 전 포켓몬이 정상 표시되는지 확인하세요. 브라우저에 이전
+> `manifest.json`이 캐시되어 Erase 동작이 다르게 보이면 설치를 중단하고 시크릿 창으로
+> 다시 접속하거나 해당 GitHub Pages 사이트 데이터를 삭제하세요. `manifest.json`을 임의로
+> 수정하지 말고, 설치 화면에서 전체 Erase를 선택하지 마세요.
+
 ## 컴파일 및 웹 배포
 
 Arduino IDE에서 `TamaPoke/TamaPoke.ino`를 열고 보드 설정을 완료한 뒤 컴파일합니다.
 자세한 절차는 `ARDUINO_IDE_BEGINNER_GUIDE.md`를 참고하세요.
 
-이 v0.40.1 패키지에는 컴파일이 확인된 앱 영역 전용 바이너리가 포함되어 있습니다.
+이 v0.40.2 패키지에는 컴파일이 확인된 앱 영역 전용 바이너리가 포함되어 있습니다.
 웹 배포 파일은 `TamaPoke/web/firmware/tamapoke-ko.bin`이며 `0x10000` 앱 영역에만
 설치됩니다. 원본 v1.4가 아닌 보드에는 사용하지 마세요.
 
@@ -98,7 +110,7 @@ Arduino IDE에서 `TamaPoke/TamaPoke.ino`를 열고 보드 설정을 완료한 �
 ```text
 TamaPoke/web/index.html
 TamaPoke/web/manifest.json
-TamaPoke/web/firmware/tamapoke-ko.bin  ← v0.40.1 앱 영역 업데이트 이미지
+TamaPoke/web/firmware/tamapoke-ko.bin  ← v0.40.2 앱 영역 업데이트 이미지
 ```
 
 ## 원작자 존중
