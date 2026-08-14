@@ -35,6 +35,10 @@
   .credit { margin-top:3rem; padding-top:1.25rem; border-top:1px solid var(--track);
             font-size:.85rem; color:#6b6b76; }
   .credit p { margin:.35rem 0; }
+  .warning { margin:1rem 0; padding:1rem; border:2px solid #d97706; border-radius:10px;
+             background:#fff7ed; color:#4a2a08; }
+  .warning h3 { margin:.1rem 0 .65rem; color:#9a3412; }
+  .warning p { margin:.55rem 0; }
 </style>
 </head>
 <body>
@@ -49,10 +53,12 @@
 
   <h2><span class="num">🔧</span>펌웨어 설치</h2>
   <div class="step">
-    <p><b>⚠️ 먼저 본인의 상황을 확인하세요.</b></p>
-    <p><b>① 다마포케를 처음 설치하는 새 기기:</b> 먼저 <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">원작자 설치 페이지</a>에서 원본 TamaPoke <b>v1.4 펌웨어와 스프라이트</b>를 설치하고 정상 작동을 확인하세요. 그 다음 이 페이지로 돌아와 한글 펌웨어를 설치하세요. 원본 설치 단계에서는 새 기기일 때만 초기화가 허용됩니다.</p>
-    <p><b>② 이미 원작자판을 사용 중인 기존 기기:</b> 원작자 페이지에서 원본 펌웨어를 다시 설치하지 마세요. 원작자 펌웨어를 다시 설치하면 저장된 포켓몬이 초기화될 수 있습니다. 바로 이 페이지에서 한글 펌웨어만 업데이트하세요.</p>
-    <p class="note">이 페이지는 원본 v1.4의 부트로더·파티션·저장 영역을 유지하는 업데이트 전용입니다. 설치 대화상자가 나오면 <b>Erase는 반드시 선택하지 마세요.</b></p>
+    <div class="warning">
+      <h3>⚠️ 설치 전 반드시 확인</h3>
+      <p><b>다마포케를 처음 설치하는 새 기기</b><br>원작자 <a href="https://socquique.github.io/TamaPoke/web/" target="_blank" rel="noreferrer">설치 페이지</a>에서 원본 TamaPoke <b>v1.4 펌웨어와 스프라이트</b>를 먼저 설치하고 정상 작동을 확인하세요. 그 다음 이 페이지에서 한글 펌웨어를 설치합니다.</p>
+      <p><b>이미 원작자판을 사용 중인 기존 기기</b><br><b>원작자 페이지에서 펌웨어를 다시 설치하지 마세요.</b> 저장된 포켓몬이 초기화될 수 있습니다. 바로 이 페이지에서 한글 펌웨어만 업데이트하세요.</p>
+      <p><b>이 페이지는 기존 원본 v1.4의 앱 업데이트 전용입니다.</b> 설치 화면에서 전체 <b>Erase는 선택하지 마세요.</b></p>
+    </div>
     <p class="note"><b>⚠️ 저장 데이터 보호:</b> 설치 전 포켓몬이 정상 표시되는지 확인하세요. 이전 페이지가 캐시되어 Erase 안내가 이상하게 보이면 설치하지 말고 시크릿 창을 사용하거나 사이트 데이터를 삭제한 뒤 다시 접속하세요. 전체 Erase는 저장된 포켓몬을 삭제할 수 있습니다.</p>
     <p>보드를 USB로 연결한 뒤 설치 버튼을 누르세요. 포트를 선택하고 완료될 때까지 기다리세요.</p>
     <esp-web-install-button manifest="manifest.json">
