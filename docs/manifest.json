@@ -1,6 +1,6 @@
 {
   "name": "TamaPoke 한국어판",
-  "version": "0.40.2",
+  "version": "0.50.0",
   "new_install_prompt_erase": true,
   "builds": [
     {
