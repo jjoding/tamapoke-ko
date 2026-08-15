@@ -108,23 +108,6 @@
 > 다시 접속하거나 해당 GitHub Pages 사이트 데이터를 삭제하세요. `manifest.json`을 임의로
 > 수정하지 말고, 설치 화면에서 전체 Erase를 선택하지 마세요.
 
-## 컴파일 및 웹 배포
-
-Arduino IDE에서 `TamaPoke/TamaPoke.ino`를 열고 보드 설정을 완료한 뒤 컴파일합니다.
-자세한 절차는 `ARDUINO_IDE_BEGINNER_GUIDE.md`를 참고하세요.
-
-이 v0.40.2 패키지에는 컴파일이 확인된 앱 영역 전용 바이너리가 포함되어 있습니다.
-웹 배포 파일은 `TamaPoke/web/firmware/tamapoke-ko.bin`이며 `0x10000` 앱 영역에만
-설치됩니다. 원본 v1.4가 아닌 보드에는 사용하지 마세요.
-
-웹 파일 구조:
-
-```text
-TamaPoke/web/index.html
-TamaPoke/web/manifest.json
-TamaPoke/web/firmware/tamapoke-ko.bin  ← v0.40.2 앱 영역 업데이트 이미지
-```
-
 ## 원작자 존중
 
 TamaPoke 한국어판은 socquique의 프로젝트를 기반으로 한 비공식·비상업적 팬 프로젝트입니다.
