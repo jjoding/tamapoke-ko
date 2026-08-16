@@ -11,6 +11,19 @@
 
 설치 전에는 아래의 `설치 전 반드시 확인` 항목을 먼저 읽어 주세요.
 
+## 화면 미리보기
+
+<p align="center">
+  <img src="image/01.jpg" alt="다마포케 한국어판 대표 화면" width="420">
+</p>
+
+|  |  |  |
+|---|---|---|
+| <img src="image/02.jpg" alt="다마포케 한국어판 화면 02" width="220"> | <img src="image/03.jpg" alt="다마포케 한국어판 화면 03" width="220"> | <img src="image/04.jpg" alt="다마포케 한국어판 화면 04" width="220"> |
+| <img src="image/05.jpg" alt="다마포케 한국어판 화면 05" width="220"> | <img src="image/06.jpg" alt="다마포케 한국어판 화면 06" width="220"> | <img src="image/07.jpg" alt="다마포케 한국어판 화면 07" width="220"> |
+| <img src="image/08.jpg" alt="다마포케 한국어판 화면 08" width="220"> | <img src="image/09.jpg" alt="다마포케 한국어판 화면 09" width="220"> | <img src="image/10.jpg" alt="다마포케 한국어판 화면 10" width="220"> |
+| <img src="image/11.jpg" alt="다마포케 한국어판 화면 11" width="220"> | <img src="image/12.jpg" alt="다마포케 한국어판 화면 12" width="220"> |  |
+
 ## 릴리즈 정보
 
 | 항목 | 내용 |
